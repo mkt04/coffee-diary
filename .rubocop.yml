@@ -1,0 +1,42 @@
+require:
+  - rubocop-rails
+  - rubocop-performance
+
+AllCops:
+  TargetRubyVersion: 3.0.3
+  NewCops: enable
+  Exclude:
+    - bin/*
+    - db/schema.rb
+    - db/migrate/*
+    - gems/**/*
+    - vendor/**/*
+    - Gemfile
+
+Rails:
+  Enabled: true
+
+# for Windows
+Layout/EndOfLine:
+  Enabled: false
+
+# Prefer single-quoted strings when you don't need string interpolation or special symbols.
+Style/StringLiterals:
+  Enabled: false
+
+# Line is too long.
+#Layout/LineLength:
+#  Enabled: false
+
+# Missing frozen string literal comment.
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# Missing top-level documentation comment for module ApplicationHelper.
+Style/Documentation:
+  Enabled: false
+
+# Do not use space inside array brackets.
+Layout/SpaceInsideArrayLiteralBrackets:
+  Enabled: false
+
