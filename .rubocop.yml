@@ -14,6 +14,11 @@ AllCops:
     - vendor/**/*
     - Gemfile
 
+# Block has too many lines.
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
+
 Rails:
   Enabled: true
 
@@ -41,3 +46,10 @@ Style/Documentation:
 Layout/SpaceInsideArrayLiteralBrackets:
   Enabled: false
 
+# Do not use spaces inside percent literal delimiters.
+Layout/SpaceInsidePercentLiteralDelimiters:
+  Enabled: false
+
+# Put empty method definitions on a single line.
+Style/EmptyMethod:
+  Enabled: false
