@@ -13,4 +13,19 @@ environment.loaders.prepend('vue', {
     }]
 })
 
+const webpack = require('webpack')
+environment.plugins.append(
+    'Provide',
+    new webpack.ProvidePlugin({
+        $: 'jquery',
+        jQuery: 'jquery',
+        Popper: ['popper.js', 'default']
+    })
+)
+
+// .use配列の最後を {loader: 'resolve-url'}に置き換えている
+environment.loaders.get('sass').use.splice(-1, 0, {
+    loader: 'resolve-url-loader'
+})
+
 module.exports = environment
