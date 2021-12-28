@@ -1,7 +1,7 @@
 FROM ruby:3.0.3
 
-# yarnƒpƒbƒP[ƒWŠÇ—ƒc[ƒ‹‚ðƒCƒ“ƒXƒg[ƒ‹
-RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
+# yarnãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ç®¡ç†ãƒ„ãƒ¼ãƒ«ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
+RUN apt-get update && apt-get install -y curl apt-transport-https wget vim && \
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
 apt-get update && apt-get install -y yarn
@@ -15,7 +15,15 @@ RUN bundle install
 COPY . /coffee-dialy
 
 RUN yarn install --check-files
+RUN yarn add resolve-url-loader@^4.0.0
+RUN yarn add acorn@^8.5.0
+
 RUN bundle exec rails webpacker:compile
+
+ENV TZ '/usr/share/zoneinfo/Asia/Tokyo'
+ENV LANG ja_JP.UTF-8
+ENV LC_ALL C.UTF-8
+ENV LANGUAGE ja_JP.UTF-8
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
