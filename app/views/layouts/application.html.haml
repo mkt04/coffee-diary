@@ -9,4 +9,23 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+    .ui.attached.stackable.menu
+      .ui.container
+        %a.item
+          %i.coffee.icon
+          Home
+        .ui.simple.dropdown.item
+          More
+          %i.dropdown.icon
+          .menu
+            %a.item
+              %i.edit.icon
+              Edit Profile
+            %a.item
+              %i.settings.icon
+              Account Settings
+        .right.item
+          .ui.input
+            %input{:placeholder => "Search...", :type => "text"}
     = yield
+
