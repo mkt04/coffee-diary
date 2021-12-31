@@ -3,16 +3,17 @@
 %h1 Articles#index
 
 .ui.grid.padded
-  .one.column.row
-    .column
+  -# TODO::styleをCSSに切り出すこと。article用のコンポーネントを作る
+  .one.column.row{style: "padding-top: 0rem; padding-bottom: 0rem;"}
+    .column.ui.segment
       = render partial: "article", locals: {size: "medium"}
-  .two.column.row
-    .column
+  .two.column.row{style: "padding-top: 0rem; padding-bottom: 0rem;"}
+    .column.ui.segment
       = render partial: "article", locals: {size: "small"}
-    .column
+    .column.ui.segment
       = render partial: "article", locals: {size: "small"}
-  .two.column.row
-    .column
+  .two.column.row{style: "padding-top: 0rem; padding-bottom: 0rem;"}
+    .column.ui.segment
       = render partial: "article", locals: {size: "small"}
-    .column
+    .column.ui.segment
       = render partial: "article", locals: {size: "small"}
