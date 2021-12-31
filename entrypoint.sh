@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
 
-rm -f /coffee-dialy/tmp/pids/server.pid
+rm -f /coffee-diary/tmp/pids/server.pid
 
 exec "$@"

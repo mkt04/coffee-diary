@@ -7,12 +7,12 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.lis
 apt-get update && apt-get install -y yarn
 
 RUN apt-get update -qq && apt-get install -y nodejs yarn
-RUN mkdir /coffee-dialy
-WORKDIR /coffee-dialy
-COPY Gemfile /coffee-dialy/Gemfile
-COPY Gemfile.lock /coffee-dialy/Gemfile.lock
+RUN mkdir /coffee-diary
+WORKDIR /coffee-diary
+COPY Gemfile /coffee-diary/Gemfile
+COPY Gemfile.lock /coffee-diary/Gemfile.lock
 RUN bundle install
-COPY . /coffee-dialy
+COPY . /coffee-diary
 
 RUN yarn install --check-files
 RUN yarn add resolve-url-loader@^4.0.0
