@@ -1,12 +1,18 @@
 - content_for :title, "Coffee diary"
 
 %h1 Articles#index
-.ui.four.column.doubling.stackable.grid.container
-  .column
-    %p コンテナ1
-  .column
-    %p コンテナ2
-  .column
-    %p コンテナ3
-  .column
-    %p コンテナ4
+
+.ui.grid.padded
+  .one.column.row
+    .column
+      = render partial: "article", locals: {size: "medium"}
+  .two.column.row
+    .column
+      = render partial: "article", locals: {size: "small"}
+    .column
+      = render partial: "article", locals: {size: "small"}
+  .two.column.row
+    .column
+      = render partial: "article", locals: {size: "small"}
+    .column
+      = render partial: "article", locals: {size: "small"}

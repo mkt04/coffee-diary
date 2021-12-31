@@ -1,0 +1,14 @@
+- image_size = size == "medium" ? "medium" : "small"
+
+.ui.unstackable.items
+  .item
+    .ui.image{class: image_size}
+      %img{src: asset_pack_path("media/images/no_image.png")}
+    .content
+      %a.header 見出し
+      .description
+        %p 説明
+      .extra
+        .ui.teal.label
+          フレーバー
+          %i.delete.icon
