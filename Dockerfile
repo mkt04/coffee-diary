@@ -14,6 +14,9 @@ COPY Gemfile.lock /coffee-diary/Gemfile.lock
 RUN bundle install
 COPY . /coffee-diary
 
+RUN npm init
+RUN npm install semantic-ui-css
+
 RUN yarn install --check-files
 RUN yarn add resolve-url-loader@^4.0.0
 RUN yarn add acorn@^8.5.0
