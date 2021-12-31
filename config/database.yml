@@ -19,14 +19,14 @@ default: &default
 
 development:
   <<: *default
-  database: coffee_dialy_development
+  database: coffee_diary_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: coffee_dialy_test
+  database: coffee_diary_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -50,6 +50,6 @@ test:
 #
 production:
   <<: *default
-  database: coffee_dialy_production
-  username: coffee_dialy
-  password: <%= ENV['COFFEE_DIALY_DATABASE_PASSWORD'] %>
+  database: coffee_diary_production
+  username: coffee_diary
+  password: <%= ENV['COFFEE_DIARY_DATABASE_PASSWORD'] %>
