@@ -1,3 +1,3 @@
 class Article < ApplicationRecord
-  has_one_attached :photos
+  has_many_attached :photos
 end

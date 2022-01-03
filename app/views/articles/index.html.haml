@@ -26,7 +26,9 @@
         %td= article.producing_area
         %td= article.particle_size
         %td= article.memo
-        %td= image_tag article.photos.variant(resize_to_limit: [100, 100])
+        %td
+          - if article.photos.attached?
+            = image_tag article.photos.first.variant(resize_to_limit: [100, 100])
         %td= article.want_to_again
         %td= link_to 'Show', article
         %td= link_to 'Edit', edit_article_path(article)
