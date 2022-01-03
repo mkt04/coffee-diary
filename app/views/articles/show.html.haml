@@ -20,7 +20,7 @@
   = @article.memo
 %p
   %b Photos:
-  = @article.photos
+  = image_tag @article.photos.variant(resize_to_limit: [100, 100])
 %p
   %b Want to again:
   = @article.want_to_again
