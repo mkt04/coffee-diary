@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Date:
+  = @article.date
+%p
+  %b Shop name:
+  = @article.shop_name
+%p
+  %b Bean name:
+  = @article.bean_name
+%p
+  %b Producing area:
+  = @article.producing_area
+%p
+  %b Particle size:
+  = @article.particle_size
+%p
+  %b Memo:
+  = @article.memo
+%p
+  %b Photos:
+  = @article.photos
+%p
+  %b Want to again:
+  = @article.want_to_again
+
+= link_to 'Edit', edit_article_path(@article)
+\|
+= link_to 'Back', articles_path
