@@ -6,7 +6,7 @@ curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
 apt-get update && apt-get install -y yarn
 
-RUN apt-get update -qq && apt-get install -y nodejs npm yarn
+RUN apt-get update -qq && apt-get install -y nodejs yarn
 RUN mkdir /coffee-diary
 WORKDIR /coffee-diary
 COPY Gemfile /coffee-diary/Gemfile
@@ -14,12 +14,10 @@ COPY Gemfile.lock /coffee-diary/Gemfile.lock
 RUN bundle install
 COPY . /coffee-diary
 
-RUN npm init
-RUN npm install semantic-ui-css
-
 RUN yarn install --check-files
 RUN yarn add resolve-url-loader@^4.0.0
 RUN yarn add acorn@^8.5.0
+RUN yarn add semantic-ui-css
 
 RUN bundle exec rails webpacker:compile
 
