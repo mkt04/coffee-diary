@@ -3,12 +3,35 @@
 .ui.unstackable.items
   .item
     .ui.image{class: image_size}
-      %img{src: asset_pack_path("media/images/no_image.png")}
+      - if photo = article.photos.first.presence
+        = image_tag photo.variant(resize_to_limit: [100, 100])
+      - else
+        %img{src: asset_pack_path("media/images/no_image.png")}
     .content
-      %a.header 見出し
+      / 豆・ブレンドの名前
+      %a.header= article.bean_name
+      / 日付
       .description
-        %p 説明
+        %p= article.date
+      / 店名
+      .description
+        %p= article.shop_name
+      / 産地
+      .description
+        %p= article.producing_area
+      / 挽き方
+      .description
+        %p= article.particle_size
+      / リピート
+      .description
+        %p= article.want_to_again
+      / メモ
+      .description
+        %p= article.memo
       .extra
         .ui.teal.label
           フレーバー
           %i.delete.icon
+      %div= link_to 'Show', article
+      %div= link_to 'Edit', edit_article_path(article)
+      %div= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }

@@ -2,54 +2,18 @@
 
 %h1 Listing articles
 
-%table
-  %thead
-    %tr
-      %th Date
-      %th Shop name
-      %th Bean name
-      %th Producing area
-      %th Particle size
-      %th Memo
-      %th Photos
-      %th Want to again
-      %th
-      %th
-      %th
-
-  %tbody
-    - @articles.each do |article|
-      %tr
-        %td= article.date
-        %td= article.shop_name
-        %td= article.bean_name
-        %td= article.producing_area
-        %td= article.particle_size
-        %td= article.memo
-        %td
-          - if article.photos.attached?
-            = image_tag article.photos.first.variant(resize_to_limit: [100, 100])
-        %td= article.want_to_again
-        %td= link_to 'Show', article
-        %td= link_to 'Edit', edit_article_path(article)
-        %td= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New Article', new_article_path
-
--#.ui.grid.padded
+.ui.grid.padded
+  - article = @articles.first
   -# TODO::styleをCSSに切り出すこと。article用のコンポーネントを作る
   .one.column.row{style: "padding-top: 0rem; padding-bottom: 0rem;"}
     .column.ui.segment
-      = render partial: "article", locals: {size: "medium"}
-  .two.column.row{style: "padding-top: 0rem; padding-bottom: 0rem;"}
-    .column.ui.segment
-      = render partial: "article", locals: {size: "small"}
-    .column.ui.segment
-      = render partial: "article", locals: {size: "small"}
-  .two.column.row{style: "padding-top: 0rem; padding-bottom: 0rem;"}
-    .column.ui.segment
-      = render partial: "article", locals: {size: "small"}
-    .column.ui.segment
-      = render partial: "article", locals: {size: "small"}
+      = render partial: "article", locals: {size: "medium", article: article}
+
+  - @articles.offset(1).each_slice(2) do |articles|
+    .two.column.row{style: "padding-top: 0rem; padding-bottom: 0rem;"}
+      - articles.each do |article|
+        .column.ui.segment
+          = render partial: "article", locals: {size: "small", article: article}
+
+%br
+= link_to 'New Article', new_article_path
