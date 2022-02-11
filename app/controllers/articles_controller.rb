@@ -54,6 +54,6 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def _article_params
-      params.require(:article).permit(:date, :shop_name, :bean_name, :producing_area, :particle_size, :memo, :photos, :want_to_again)
+      params.require(:article).permit(:date, :shop_name, :bean_name, :producing_area, :particle_size, :memo, :want_to_again, photos: [])
     end
 end
