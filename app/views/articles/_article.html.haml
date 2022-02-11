@@ -1,15 +1,17 @@
-- image_size = size == "medium" ? "medium" : "small"
+-# TODO::専用のCSSを作って管理したい。FLOCSSだと「p-先頭の日記」のイメージ。デザインを詰める際に検討
+- image_size = size == "large" ? "large" : "medium"
 
 .ui.unstackable.items
   .item
     .ui.image{class: image_size}
+      -# = article.photos.count
       - if photo = article.photos.first.presence
         = image_tag photo.variant(resize_to_limit: [100, 100])
       - else
         %img{src: asset_pack_path("media/images/no_image.png")}
     .content
       / 豆・ブレンドの名前
-      %a.header= article.bean_name
+      %p.header= article.bean_name
       / 日付
       .description
         %p= article.date
@@ -32,6 +34,9 @@
         .ui.teal.label
           フレーバー
           %i.delete.icon
+
+      -# TODO::削除予定
       %div= link_to 'Show', article
+      -# TODO::削除予定。destroy同様に直接postさせたい。この画面で変更を入力させて更新を押すとupdateに飛ばす
       %div= link_to 'Edit', edit_article_path(article)
       %div= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }
