@@ -3,7 +3,8 @@ class ArticlesController < ApplicationController
 
   # GET /articles
   def index
-    @articles = Article.all
+    #TODO::検索機能実装時にmodelに移すこと
+    @articles = Article.order(date: "DESC")
   end
 
   # GET /articles/1
