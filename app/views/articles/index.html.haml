@@ -10,11 +10,11 @@
   - article = @articles.first
   -# TODO::styleをCSSに切り出すこと。article用のコンポーネントを作る
   .one.column.row{style: "padding-top: 0rem; padding-bottom: 0rem;"}
-    .column.ui.segment
+    .column.ui.segment{style: "padding: 1rem;"}
       = render partial: "article", locals: {size: "large", article: article}
 
   - @articles.offset(1).each_slice(2) do |articles|
     .two.column.row{style: "padding-top: 0rem; padding-bottom: 0rem;"}
       - articles.each do |article|
-        .column.ui.segment
+        .column.ui.segment{style: "padding: 1rem;"}
           = render partial: "article", locals: {size: "medium", article: article}

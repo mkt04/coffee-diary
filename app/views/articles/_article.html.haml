@@ -3,18 +3,30 @@
 
 .ui.unstackable.items
   .item
+    .content
+      / 日付
+      %span.header= article.date
+    .content
+      / 豆・ブレンドの名前
+      %span.header= article.bean_name
+    .content
+      -# TODO::非同期で更新・削除させたい。更新削除後は画面遷移せずに画面に反映させたい
+      %span
+        = link_to edit_article_path(article) do
+          %i.edit.icon
+          編集
+      %span
+        = link_to article, method: :delete, data: { confirm: '日記を削除しますか？' } do
+          %i.trash.alternate.outline.icon
+          削除
+
+  .item
     .ui.image{class: image_size}
-      -# = article.photos.count
       - if photo = article.photos.first.presence
         = image_tag photo.variant(resize_to_limit: [100, 100])
       - else
         %img{src: asset_pack_path("media/images/no_image.png")}
     .content
-      / 豆・ブレンドの名前
-      %p.header= article.bean_name
-      / 日付
-      .description
-        %p= article.date
       / 店名
       .description
         %p= article.shop_name
@@ -27,16 +39,11 @@
       / リピート
       .description
         %p= article.want_to_again
+      / フレーバー
+      .extra
+        -# TODO::articleにフレーバーをリレーションで持たせる。フレーバーを全て並べて評させる
+        .ui.teal.label ワイニー
+        .ui.teal.label フルボディ
       / メモ
       .description
         %p= article.memo
-      .extra
-        .ui.teal.label
-          フレーバー
-          %i.delete.icon
-
-      -# TODO::削除予定
-      %div= link_to 'Show', article
-      -# TODO::削除予定。destroy同様に直接postさせたい。この画面で変更を入力させて更新を押すとupdateに飛ばす
-      %div= link_to 'Edit', edit_article_path(article)
-      %div= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }
