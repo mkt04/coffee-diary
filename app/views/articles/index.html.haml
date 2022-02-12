@@ -1,6 +1,10 @@
 - content_for :title, "Coffee diary"
 
-%h1 Listing articles
+%h1 コーヒー日記
+
+= link_to new_article_path do
+  %i.coffee.icon
+  新しい日記
 
 .ui.grid.padded
   - article = @articles.first
@@ -14,6 +18,3 @@
       - articles.each do |article|
         .column.ui.segment
           = render partial: "article", locals: {size: "medium", article: article}
-
-%br
-= link_to 'New Article', new_article_path
