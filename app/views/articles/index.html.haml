@@ -1,7 +1,22 @@
 - content_for :title, "Coffee diary"
 
+-# TOOD::暫定対応。正式なCSSに移植すること
+:css
+  .p-article-header-date {
+    width: 90px;
+    flex: 0 0 auto !important; /* semantic-ui の ui.items の要素を上書き。他の方法がないか調査すること */
+  }
+  .p-article-header-bean-name {
+    flex: 1 1 auto !important;
+  }
+  .p-article-header-edit-menu {
+    width: 110px;
+    flex: 0 0 auto !important;
+  }
+
 %h1 コーヒー日記
 
+-# TODO::ヘッダーメニューに移動すること
 = link_to new_article_path do
   %i.coffee.icon
   新しい日記

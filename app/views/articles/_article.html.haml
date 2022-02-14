@@ -3,13 +3,13 @@
 
 .ui.unstackable.items
   .item
-    .content
+    .content.p-article-header-date
       / 日付
-      %span.header= l(article.date, format: :long)
-    .content
+      %span.header= l(article.date, format: :mda)
+    .content.p-article-header-bean-name
       / 豆・ブレンドの名前
       %span.header= article.bean_name
-    .content
+    .content.p-article-header-edit-menu
       -# TODO::非同期で更新・削除させたい。更新削除後は画面遷移せずに画面に反映させたい
       %span
         = link_to edit_article_path(article) do
