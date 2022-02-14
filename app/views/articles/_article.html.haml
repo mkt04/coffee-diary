@@ -4,10 +4,8 @@
 .ui.unstackable.items
   .item
     .content.p-article-header-date
-      / 日付
       %span.header= l(article.date, format: :mda)
     .content.p-article-header-bean-name
-      / 豆・ブレンドの名前
       %span.header= article.bean_name
     .content.p-article-header-edit-menu
       -# TODO::非同期で更新・削除させたい。更新削除後は画面遷移せずに画面に反映させたい
@@ -15,7 +13,7 @@
         = link_to edit_article_path(article) do
           %i.edit.icon
           編集
-      %span
+      %span.ui.right.floated
         = link_to article, method: :delete, data: { confirm: '日記を削除しますか？' } do
           %i.trash.alternate.outline.icon
           削除
@@ -27,29 +25,39 @@
       - else
         %img{src: asset_pack_path("media/images/no_image.png")}
     .content
-      / 店名
       .description
-        %p= article.shop_name
+        %p
+          お店：
+          = article.shop_name
       - if article.producing_area.present?
-        / 産地
         .description
-          %p= article.producing_area
+          %p
+            産地：
+            = article.producing_area
       - if article.particle_size.present?
-        / 挽き方
         .description
-          %p= article.particle_size
+          %p
+            挽き目：
+            = article.particle_size
       - if article.want_to_again?
         .description
           %p
             -# TODO::CSS化すること
             %i.check.circle.outline.icon{style: "color: #00B5AD; margin: 0px;"}
             リピート
-      / フレーバー
       .extra
         -# TODO::articleにフレーバーをリレーションで持たせる。フレーバーを全て並べて評させる
         .ui.teal.label ワイニー
         .ui.teal.label フルボディ
-      - if article.memo.present?
-        / メモ
-        .description
-          %p= article.memo
+
+      - if size == "large"
+        - if article.memo.present?
+          .description
+            = text_area_tag "memo", article.memo, {rows: 7, cols: 35, disabled: :disabled}
+
+  - if size == "medium"
+    - if article.memo.present?
+      .item
+        .content
+          .description
+            = text_area_tag "memo", article.memo, {rows: 7, cols: 35, disabled: :disabled}
