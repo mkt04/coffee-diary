@@ -5,7 +5,7 @@
   .item
     .content
       / 日付
-      %span.header= article.date
+      %span.header= l(article.date, format: :long)
     .content
       / 豆・ブレンドの名前
       %span.header= article.bean_name
