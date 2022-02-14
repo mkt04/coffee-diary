@@ -30,20 +30,26 @@
       / 店名
       .description
         %p= article.shop_name
-      / 産地
-      .description
-        %p= article.producing_area
-      / 挽き方
-      .description
-        %p= article.particle_size
-      / リピート
-      .description
-        %p= article.want_to_again
+      - if article.producing_area.present?
+        / 産地
+        .description
+          %p= article.producing_area
+      - if article.particle_size.present?
+        / 挽き方
+        .description
+          %p= article.particle_size
+      - if article.want_to_again?
+        .description
+          %p
+            -# TODO::CSS化すること
+            %i.check.circle.outline.icon{style: "color: #00B5AD; margin: 0px;"}
+            リピート
       / フレーバー
       .extra
         -# TODO::articleにフレーバーをリレーションで持たせる。フレーバーを全て並べて評させる
         .ui.teal.label ワイニー
         .ui.teal.label フルボディ
-      / メモ
-      .description
-        %p= article.memo
+      - if article.memo.present?
+        / メモ
+        .description
+          %p= article.memo
