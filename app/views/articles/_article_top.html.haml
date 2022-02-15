@@ -16,9 +16,9 @@
           削除
 
   .item
-    .ui.image.medium
+    .ui.image.large
       - if photo = article.photos.first.presence
-        = image_tag photo.variant(resize_to_fill: [300, 200])
+        = image_tag photo.variant(resize_to_fill: [450, 300])
       - else
         %img{src: asset_pack_path("media/images/no_image.png")}
     .content
@@ -45,8 +45,5 @@
         -# TODO::articleにフレーバーをリレーションで持たせる。フレーバーを全て並べて評させる
         .ui.teal.label ワイニー
         .ui.teal.label フルボディ
-
-  .item
-    .content
       .description
         = text_area_tag "memo", article.memo, {rows: 7, cols: 35, disabled: :disabled}
