@@ -10,11 +10,14 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
 
   %body
-    .ui.attached.stackable.menu
+    .ui.menu.fixed
       .ui.container
-        %a.item
+        = link_to articles_path, {class: :item} do
           %i.coffee.icon
-          Home
+          日記一覧
+        = link_to new_article_path, {class: :item} do
+          %i.pencil.alternate.icon
+          新しい日記
         .ui.simple.dropdown.item
           More
           %i.dropdown.icon

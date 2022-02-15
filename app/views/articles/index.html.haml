@@ -1,5 +1,7 @@
 - content_for :title, "Coffee diary"
 
+%h1 コーヒー日記
+
 -# TOOD::暫定対応。正式なCSSに移植すること
 :css
   .p-article-header-date {
@@ -13,13 +15,6 @@
     width: 110px;
     flex: 0 0 auto !important;
   }
-
-%h1 コーヒー日記
-
--# TODO::ヘッダーメニューに移動すること
-= link_to new_article_path do
-  %i.coffee.icon
-  新しい日記
 
 .ui.grid.padded
   - article = @articles.first
