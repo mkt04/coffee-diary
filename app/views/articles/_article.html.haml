@@ -58,13 +58,11 @@
         .ui.teal.label フルボディ
 
       - if size == "large"
-        - if article.memo.present?
-          .description
-            = text_area_tag "memo", article.memo, {rows: 7, cols: 35, disabled: :disabled}
+        .description
+          = text_area_tag "memo", article.memo, {rows: 7, cols: 35, disabled: :disabled}
 
   - if size == "medium"
-    - if article.memo.present?
-      .item
-        .content
-          .description
-            = text_area_tag "memo", article.memo, {rows: 7, cols: 35, disabled: :disabled}
+    .item
+      .content
+        .description
+          = text_area_tag "memo", article.memo, {rows: 7, cols: 35, disabled: :disabled}
