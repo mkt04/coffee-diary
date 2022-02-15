@@ -21,13 +21,15 @@
 
   .item
     -# TODO::画像の描画スタイルを検討すること。largeとmediumの両対応をしたい
-    .ui.image{class: image_size}
-      - if photo = article.photos.first.presence
-        - if image_size == "large"
-          = image_tag photo.variant(resize: "450x300!^").processed
-        - else
-          = image_tag photo.variant(resize: "300x200!^").processed
+    - if photo = article.photos.first.presence
+      - if image_size == "large"
+        .ui.image{class: image_size}
+          = image_tag photo.variant(resize_to_fill: [450, 300])
       - else
+        .ui.image{class: image_size}
+          = image_tag photo.variant(resize_to_fill: [300, 200])
+    - else
+      .ui.image{class: image_size}
         %img{src: asset_pack_path("media/images/no_image.png")}
     .content
       .description
