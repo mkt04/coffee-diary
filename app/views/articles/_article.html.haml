@@ -1,4 +1,5 @@
 -# TODO::専用のCSSを作って管理したい。FLOCSSだと「p-先頭の日記」のイメージ。デザインを詰める際に検討
+-# TODO::パーシャルを分離するか検討。個別デザインが増えてきたため。無理やりな共通化は避けたい
 - image_size = size == "large" ? "large" : "medium"
 
 .ui.unstackable.items
@@ -19,9 +20,13 @@
           削除
 
   .item
+    -# TODO::画像の描画スタイルを検討すること。largeとmediumの両対応をしたい
     .ui.image{class: image_size}
       - if photo = article.photos.first.presence
-        = image_tag photo.variant(resize_to_limit: [100, 100])
+        - if image_size == "large"
+          = image_tag photo.variant(resize: "450x300!^").processed
+        - else
+          = image_tag photo.variant(resize: "300x200!^").processed
       - else
         %img{src: asset_pack_path("media/images/no_image.png")}
     .content
