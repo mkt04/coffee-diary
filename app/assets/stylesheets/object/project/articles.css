@@ -1,0 +1,26 @@
+/* semantic-ui の要素を !important で上書き */
+/* TODO::他の方法がないか調査すること。CSS FWを使ううえでのセオリーがないか？ */
+.p-article-row{
+    padding-top: 0rem !important;
+    padding-bottom: 0rem !important;
+}
+.p-article-row-segment{
+    padding: 1rem !important;
+}
+
+.p-article-header-date {
+    width: 90px;
+    flex: 0 0 auto !important;
+}
+.p-article-header-bean-name {
+    flex: 1 1 auto !important;
+}
+.p-article-header-edit-menu {
+    width: 110px;
+    flex: 0 0 auto !important;
+}
+
+.p-article-repeat-icon{
+    color: #00B5AD; /* TODO::semantic-uiのcolor(teal)と連動させたい。CSS設計から調査すること */
+    margin: 0px !important;
+}

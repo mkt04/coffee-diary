@@ -2,29 +2,14 @@
 
 %h1 コーヒー日記
 
--# TOOD::暫定対応。正式なCSSに移植すること
-:css
-  .p-article-header-date {
-    width: 90px;
-    flex: 0 0 auto !important; /* semantic-ui の ui.items の要素を上書き。他の方法がないか調査すること */
-  }
-  .p-article-header-bean-name {
-    flex: 1 1 auto !important;
-  }
-  .p-article-header-edit-menu {
-    width: 110px;
-    flex: 0 0 auto !important;
-  }
-
 .ui.grid.padded
   - article = @articles.first
-  -# TODO::styleをCSSに切り出すこと。article用のコンポーネントを作る
-  .one.column.row{style: "padding-top: 0rem; padding-bottom: 0rem;"}
-    .column.ui.segment{style: "padding: 1rem;"}
+  .one.column.row.p-article-row
+    .column.ui.segment.p-article-row-segment
       = render partial: "article", locals: {size: "large", article: article}
 
   - @articles.offset(1).each_slice(2) do |articles|
-    .two.column.row{style: "padding-top: 0rem; padding-bottom: 0rem;"}
+    .two.column.row.p-article-row
       - articles.each do |article|
-        .column.ui.segment{style: "padding: 1rem;"}
+        .column.ui.segment.p-article-row-segment
           = render partial: "article", locals: {size: "medium", article: article}

@@ -1,4 +1,3 @@
--# TODO::専用のCSSを作って管理したい。FLOCSSだと「p-先頭の日記」のイメージ。デザインを詰める際に検討
 -# TODO::パーシャルを分離するか検討。個別デザインが増えてきたため。無理やりな共通化は避けたい
 - image_size = size == "large" ? "large" : "medium"
 
@@ -49,8 +48,7 @@
       - if article.want_to_again?
         .description
           %p
-            -# TODO::CSS化すること
-            %i.check.circle.outline.icon{style: "color: #00B5AD; margin: 0px;"}
+            %i.check.circle.outline.icon.p-article-repeat-icon
             リピート
       .extra
         -# TODO::articleにフレーバーをリレーションで持たせる。フレーバーを全て並べて評させる
