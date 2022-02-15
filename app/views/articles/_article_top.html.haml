@@ -20,7 +20,7 @@
       - if photo = article.photos.first.presence
         = image_tag photo.variant(resize_to_fill: [450, 300])
       - else
-        %img{src: asset_pack_path("media/images/no_image.png")}
+        %img.p-article-no-image-large{src: asset_pack_path("media/images/no_image.png")}
     .content
       .description
         %p

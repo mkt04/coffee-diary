@@ -24,3 +24,12 @@
     color: #00B5AD; /* TODO::semantic-uiのcolor(teal)と連動させたい。CSS設計から調査すること */
     margin: 0px !important;
 }
+
+.p-article-no-image-large{
+    width: 450px !important;
+    height: 300px !important;
+}
+.p-article-no-image-medium{
+    width: 300px !important;
+    height: 200px !important;
+}
