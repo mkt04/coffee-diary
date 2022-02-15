@@ -18,7 +18,7 @@
   .item
     .ui.image.large
       - if photo = article.photos.first.presence
-        = image_tag photo.variant(resize_to_fill: [450, 300])
+        = image_tag photo.variant(resize_to_fill: [450, 300]).processed
       - else
         %img.p-article-no-image-large{src: asset_pack_path("media/images/no_image.png")}
     .content
