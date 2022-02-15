@@ -33,3 +33,13 @@
     width: 300px !important;
     height: 200px !important;
 }
+
+.p-article-memo{
+    width: 35rem;
+    height: 7rem;
+    border: 2px solid #F2EACD;
+    border-radius: 0.67em;
+    padding: 0.5em;
+    background-color: #FFFEF6;
+    line-height: 1.2;
+}
