@@ -2,14 +2,14 @@
 
 %h1 コーヒー日記
 
-.ui.grid.padded
-  - article = @articles.first
-  .one.column.row.p-article-row
+- article = @articles.first
+.ui.two.column.stackable.grid.padded
+  .sixteen.wide.column.p-article-row
     .column.ui.segment.p-article-row-segment
       = render partial: "article_top", locals: {article: article}
 
   - @articles.offset(1).each_slice(2) do |articles|
-    .two.column.row.p-article-row
+    .eight.wide.column.p-article-row
       - articles.each do |article|
         .column.ui.segment.p-article-row-segment
           = render partial: "article", locals: {article: article}
