@@ -4,9 +4,12 @@
 
 - article = @articles.first
 .ui.two.column.grid.padded
-  .sixteen.wide.column.p-article-row
+  .sixteen.wide.column.p-article-row.p-article-row-pc-top
     .column.ui.segment.p-article-row-segment
       = render partial: "article_top", locals: {article: article}
+  .eight.wide.column.p-article-row.p-article-row-sp-top
+    .column.ui.segment.p-article-row-segment
+      = render partial: "article", locals: {article: article}
 
   - @articles.offset(1).each_slice(2) do |articles|
     .eight.wide.column.p-article-row

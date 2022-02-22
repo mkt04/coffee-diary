@@ -5,6 +5,9 @@
     min-width: 347px;
     padding: 0rem !important;
 }
+.p-article-row-sp-top{
+    display: none !important;
+}
 .p-article-row-segment{
     margin: 0rem !important;
     padding: 1rem !important;
@@ -51,6 +54,12 @@
         font-size: 1.2em !important;
     }
 
+    .p-article-row-pc-top{
+        display: none !important;
+    }
+    .p-article-row-sp-top{
+        display: inline-block !important;
+    }
     .p-article-row-segment{
         padding: 0.75rem !important;
     }
