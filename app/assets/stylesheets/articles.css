@@ -2,6 +2,7 @@
 /* TODO::他の方法がないか調査すること。CSS FWを使ううえでのセオリーがないか？ */
 /* 追記：semantic-ui は webpacker にて管理している。CSS構造を修正後に検討する */
 .p-article-row{
+    min-width: 347px;
     padding: 0rem !important;
 }
 .p-article-row-segment{

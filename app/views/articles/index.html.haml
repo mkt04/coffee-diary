@@ -3,7 +3,7 @@
 %h1 コーヒー日記
 
 - article = @articles.first
-.ui.two.column.stackable.grid.padded
+.ui.two.column.grid.padded
   .sixteen.wide.column.p-article-row
     .column.ui.segment.p-article-row-segment
       = render partial: "article_top", locals: {article: article}
