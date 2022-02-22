@@ -6,11 +6,12 @@
       %span.header= article.bean_name
     .content.p-article-header-edit-menu
       -# TODO::非同期で更新・削除させたい。更新削除後は画面遷移せずに画面に反映させたい
+      -# TODO::SP表示の場合、アイコンにまとめてタップで編集・削除のリンクを表示させたい
       %span
         = link_to edit_article_path(article) do
           %i.edit.icon
           編集
-      %span.ui.right.floated
+      %span
         = link_to article, method: :delete, data: { confirm: '日記を削除しますか？' } do
           %i.trash.alternate.outline.icon
           削除
