@@ -4,15 +4,18 @@
 
 - article = @articles.first
 .ui.two.column.grid.padded
-  .sixteen.wide.column.p-article-row.p-article-row-pc-top
-    .column.ui.segment.p-article-row-segment
-      = render partial: "article_pc_top", locals: {article: article}
-  .eight.wide.column.p-article-row.p-article-row-sp-top
-    .column.ui.segment.p-article-row-segment
-      = render partial: "article", locals: {article: article}
+  .sixteen.wide.column.p-article-column.p-article-column-pc-top
+    .column
+      .ui.segment.p-article-segment
+        = render partial: "article_pc_top", locals: {article: article}
+  .eight.wide.column.p-article-column.p-article-column-sp-top
+    .column
+      .ui.segment.p-article-segment
+        = render partial: "article", locals: {article: article}
 
   - @articles.offset(1).each_slice(2) do |articles|
-    .eight.wide.column.p-article-row
-      - articles.each do |article|
-        .column.ui.segment.p-article-row-segment
-          = render partial: "article", locals: {article: article}
+    - articles.each do |article|
+      .eight.wide.column.p-article-column
+        .column
+          .ui.segment.p-article-segment
+            = render partial: "article", locals: {article: article}

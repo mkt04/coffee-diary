@@ -1,5 +1,5 @@
 .ui.unstackable.items
-  .item.p-article-row-item
+  .item.p-article-item
     .content.p-article-header-date
       %span.header= l(article.date, format: :mda)
     .content.p-article-header-bean-name
@@ -17,7 +17,7 @@
           削除
 
 .ui.items
-  .item.p-article-row-item
+  .item.p-article-item
     .ui.image.medium
       - if photo = article.photos.first.presence
         = image_tag photo.variant(resize_to_fill: [300, 200]).processed
@@ -48,7 +48,7 @@
         .ui.teal.label ワイニー
         .ui.teal.label フルボディ
 
-  .item.p-article-row-item
+  .item.p-article-item
     .content
       .description
         = text_area_tag "memo", article.memo, {class: "p-article-memo", disabled: :disabled}

@@ -1,16 +1,12 @@
 /* semantic-ui の要素を !important で上書き */
 /* TODO::他の方法がないか調査すること。CSS FWを使ううえでのセオリーがないか？ */
 /* 追記：semantic-ui は webpacker にて管理している。CSS構造を修正後に検討する */
-.p-article-row{
+.p-article-column{
     min-width: 347px;
     padding: 0rem !important;
 }
-.p-article-row-sp-top{
+.p-article-column-sp-top{
     display: none !important;
-}
-.p-article-row-segment{
-    margin: 0rem !important;
-    padding: 1rem !important;
 }
 
 .p-article-header-date {
@@ -54,16 +50,16 @@
         font-size: 1.2em !important;
     }
 
-    .p-article-row-pc-top{
+    .p-article-column-pc-top{
         display: none !important;
     }
-    .p-article-row-sp-top{
+    .p-article-column-sp-top{
         display: inline-block !important;
     }
-    .p-article-row-segment{
+    .p-article-segment{
         padding: 0.75rem !important;
     }
-    .p-article-row-item{
+    .p-article-item{
         margin: 0rem !important;
     }
     .p-article-header-date {
