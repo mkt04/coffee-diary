@@ -18,6 +18,7 @@ RUN yarn install --check-files
 RUN yarn add resolve-url-loader@^4.0.0
 RUN yarn add acorn@^8.5.0
 RUN yarn add semantic-ui-css
+RUN yarn add jquery
 
 RUN bundle exec rails webpacker:compile
 
