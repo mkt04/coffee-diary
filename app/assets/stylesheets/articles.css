@@ -45,7 +45,7 @@
     line-height: 1.2;
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 1199px) {
     .ui.items > .item > .content > .header:not(.ui) {
         font-size: 1.2em !important;
     }

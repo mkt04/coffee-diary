@@ -18,35 +18,38 @@
 
 .ui.items
   .item.p-article-item
-    .ui.image.medium
-      - if photo = article.photos.first.presence
-        = image_tag photo.variant(resize_to_fill: [300, 200]).processed
-      - else
-        %img.p-article-no-image-medium{src: asset_pack_path("media/images/no_image.png")}
-    .content
-      .description
-        %p
-          お店：
-          = article.shop_name
-      - if article.producing_area.present?
-        .description
-          %p
-            産地：
-            = article.producing_area
-      - if article.particle_size.present?
-        .description
-          %p
-            挽き目：
-            = article.particle_size
-      - if article.want_to_again?
-        .description
-          %p
-            %i.check.circle.outline.icon.p-article-repeat-icon
-            リピート
-      .extra
-        -# TODO::articleにフレーバーをリレーションで持たせる。フレーバーを全て並べて評させる
-        .ui.teal.label ワイニー
-        .ui.teal.label フルボディ
+    .ui.items
+      .item
+        .ui.image.medium
+          - if photo = article.photos.first.presence
+            = image_tag photo.variant(resize_to_fill: [300, 200]).processed
+          - else
+            %img.p-article-no-image-medium{src: asset_pack_path("media/images/no_image.png")}
+      .item
+        .content
+          .description
+            %p
+              お店：
+              = article.shop_name
+          - if article.producing_area.present?
+            .description
+              %p
+                産地：
+                = article.producing_area
+          - if article.particle_size.present?
+            .description
+              %p
+                挽き目：
+                = article.particle_size
+          - if article.want_to_again?
+            .description
+              %p
+                %i.check.circle.outline.icon.p-article-repeat-icon
+                リピート
+          .extra
+            -# TODO::articleにフレーバーをリレーションで持たせる。フレーバーを全て並べて評させる
+            .ui.teal.label ワイニー
+            .ui.teal.label フルボディ
 
   .item.p-article-item
     .content
