@@ -9,6 +9,10 @@
     display: none !important;
 }
 
+.p-article-segment{
+    min-height: 555px;
+}
+
 .p-article-header-date {
     width: 90px;
     flex: 0 0 auto !important;
