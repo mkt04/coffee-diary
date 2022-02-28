@@ -14,10 +14,10 @@
       .ui.container
         = link_to articles_path, {class: :item} do
           %i.coffee.icon
-          日記一覧
+          %span.header-menu-description 日記一覧
         = link_to new_article_path, {class: :item} do
           %i.pencil.alternate.icon
-          新しい日記
+          %span.header-menu-description 新しい日記
         -#.ui.simple.dropdown.item
           More
           %i.dropdown.icon
@@ -28,7 +28,7 @@
             %a.item
               %i.settings.icon
               Account Settings
-        .right.item
+        .right.item.header-menu-search
           .ui.input
             %input{:placeholder => "Search...", :type => "text"}
     .ui.container.body-content
