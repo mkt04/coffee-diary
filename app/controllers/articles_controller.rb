@@ -25,7 +25,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(_article_params)
 
     if @article.save
-      redirect_to article_url(@article), notice: "Article was successfully created."
+      redirect_to article_url(@article), notice: "日記を記入しました"
     else
       render :new, status: :unprocessable_entity
     end
@@ -34,7 +34,7 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   def update
     if @article.update(_article_params)
-      redirect_to article_url(@article), notice: "Article was successfully updated."
+      redirect_to article_url(@article), notice: "日記を編集しました"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -44,7 +44,7 @@ class ArticlesController < ApplicationController
   def destroy
     @article.destroy
 
-    redirect_to articles_url, notice: "Article was successfully destroyed."
+    redirect_to articles_url, notice: "日記を削除しました"
   end
 
   private

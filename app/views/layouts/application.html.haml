@@ -32,5 +32,10 @@
           .ui.input
             %input{:placeholder => "Search...", :type => "text"}
     .ui.container.body-content
+      - if notice.present?
+        %p#notice
+          %i.check.circle.icon
+          = notice
+
       = yield
 
