@@ -8,9 +8,13 @@ body {
   padding: 5rem 0rem 1rem 0rem;
 }
 
-.header-menu-search:before {
-  width: 0px !important;
-  background: none !important;
+.header-menu-search {
+  width: 240px;
+
+  &:before {
+    width: 0px !important;
+    background: none !important;
+  }
 }
 
 @media only screen and (max-width: 767px) {
