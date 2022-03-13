@@ -28,7 +28,7 @@
             %a.item
               %i.settings.icon
               Account Settings
-        .right.item.header-menu-search
+        .right.item.header-menu-search.js-header-menu-search
           .ui.input
             .ui.transparent.icon.input.js-search-keyword
               %input{type: "text", placeholder: "検索"}
@@ -78,16 +78,17 @@
 
     :javascript
       $(function(){
-        $(".js-search-keyword").on("click", function(){
-          $(".js-search-conditions").show();
-          $(".js-search-conditions-overlay").show();
+        var $headerMenuSearch = $(".js-header-menu-search");
+        $headerMenuSearch.find(".js-search-keyword").on("click", function(){
+          $headerMenuSearch.find(".js-search-conditions").show();
+          $headerMenuSearch.find(".js-search-conditions-overlay").show();
         });
-        $(".js-search-conditions-overlay").on("click", function(){
-          $(".js-search-conditions").hide();
+        $headerMenuSearch.find(".js-search-conditions-overlay").on("click", function(){
+          $headerMenuSearch.find(".js-search-conditions").hide();
           $(this).hide();
         });
 
-        $(".js-search-conditions-toggle").on("click", function() {
-          $(".js-search-conditions-detail").toggle();
+        $headerMenuSearch.find(".js-search-conditions-toggle").on("click", function() {
+          $headerMenuSearch.find(".js-search-conditions-detail").toggle();
         });
       });
