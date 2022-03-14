@@ -4,7 +4,15 @@ class ArticlesController < ApplicationController
   # GET /articles
   def index
     #TODO::検索機能実装時にmodelに移すこと
+    # TODO::もっとスマートな書き方はなかったけ？要調査
     @articles = Article.order(date: "DESC")
+    @articles = @articles.where("bean_name LIKE ?", "%#{params[:bean_name]}%") if params[:bean_name].present?
+    @articles = @articles.where('date >= ?', params[:start_date]) if params[:start_date].present?
+    @articles = @articles.where('date <= ?', params[:end_date]) if params[:end_date].present?
+    @articles = @articles.where("shop_name LIKE ?", "%#{params[:shop_name]}%") if params[:shop_name].present?
+    @articles = @articles.where("producing_area LIKE ?", "%#{params[:producing_area]}%") if params[:producing_area].present?
+    @articles = @articles.where(particle_size: params[:particle_size]) if params[:particle_size].present?
+    @articles = @articles.where(want_to_again: params[:want_to_again]) if params[:want_to_again].presence
   end
 
   # GET /articles/1
