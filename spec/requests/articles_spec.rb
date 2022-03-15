@@ -25,10 +25,38 @@ RSpec.describe "/articles", type: :request do
   }
 
   describe "GET /index" do
-    it "renders a successful response" do
-      Article.create! valid_attributes
-      get articles_url
-      expect(response).to be_successful
+    before { get articles_url, params: params }
+    context "検索条件なし" do
+      let(:params) { nil }
+      context "日記データあり" do
+        before { create_list(:article, 3) }
+        it "正常系のレスポンスを返すこと" do
+          expect(response).to be_successful
+        end
+      end
+      context "日記データなし" do
+        it "正常系のレスポンスを返すこと" do
+          expect(response).to be_successful
+        end
+      end
+    end
+
+    # NOTE::検索条件とヒットしたデータのテストをどこで行うか？
+    # →ロジックのmodel切り出しを検討すること。優先度低
+    context "検索条件あり" do
+      context "検索結果あり" do
+        before { create_list(:article, 3) }
+        let(:params) {{ bean_name: "my bean" }}
+        it "正常系のレスポンスを返すこと" do
+          expect(response).to be_successful
+        end
+      end
+      context "検索結果なし" do
+        let(:params) {{ bean_name: "hoge bean" }}
+        it "正常系のレスポンスを返すこと" do
+          expect(response).to be_successful
+        end
+      end
     end
   end
 

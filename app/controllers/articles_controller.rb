@@ -13,7 +13,7 @@ class ArticlesController < ApplicationController
       @articles = @articles.where("producing_area LIKE ?", "%#{params[:producing_area]}%")
     end
     @articles = @articles.where(particle_size: params[:particle_size]) if params[:particle_size].present?
-    @articles = @articles.where(want_to_again: params[:want_to_again]) if params[:want_to_again].presence
+    @articles = @articles.where(want_to_again: params[:want_to_again]) if params[:want_to_again] == "true"
   end
 
   # GET /articles/1
