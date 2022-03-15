@@ -28,9 +28,48 @@
             %a.item
               %i.settings.icon
               Account Settings
-        .right.item.header-menu-search
-          .ui.input
-            %input{:placeholder => "Search...", :type => "text"}
+        .right.item.header-menu-search.js-header-menu-search
+          = form_with url: articles_path, method: :get do |form|
+            .ui.input
+              .ui.transparent.icon.input.js-search-keyword
+                %input{type: "text", placeholder: "検索"}
+                %i.search.icon
+              .ui.segment.search-conditions.js-search-conditions
+                .content
+                  .ui.form
+                    .field
+                      %label 豆名
+                      = form.text_field :bean_name, value: params[:bean_name]
+                    .field
+                      %label 日にち
+                      = form.date_field :start_date, class: "c-input-date", value: params[:start_date]
+                      ～
+                      = form.date_field :end_date, class: "c-input-date", value: params[:end_date]
+                    .field
+                      %label お店
+                      = form.text_field :shop_name, value: params[:shop_name]
+
+                    %p
+                      %a.js-search-conditions-toggle
+                        詳細
+                        %i.angle.down.icon
+                    -# TODO::初期値が入ってる場合はdivは表示状態にしたい。重要度低
+                    .search-conditions-detail.js-search-conditions-detail
+                      .field
+                        %label 産地
+                        = form.text_field :producing_area, value: params[:producing_area]
+                      .field
+                        %label 挽き目
+                        = form.number_field :particle_size, step: "0.1", value: params[:particle_size]
+                      .field
+                        .ui.checkbox
+                          = form.check_box :want_to_again ,{checked: params[:want_to_again] == "true"}, "true", "false"
+                          %label リピート
+
+                    .actions
+                      = form.submit "検索", class: "ui button primary right floated"
+              .search-conditions-overlay.js-search-conditions-overlay
+
     .ui.container.body-content
       - if notice.present?
         %p#notice
@@ -39,3 +78,19 @@
 
       = yield
 
+    :javascript
+      $(function(){
+        var $headerMenuSearch = $(".js-header-menu-search");
+        $headerMenuSearch.find(".js-search-keyword").on("click", function(){
+          $headerMenuSearch.find(".js-search-conditions").show();
+          $headerMenuSearch.find(".js-search-conditions-overlay").show();
+        });
+        $headerMenuSearch.find(".js-search-conditions-overlay").on("click", function(){
+          $headerMenuSearch.find(".js-search-conditions").hide();
+          $(this).hide();
+        });
+
+        $headerMenuSearch.find(".js-search-conditions-toggle").on("click", function() {
+          $headerMenuSearch.find(".js-search-conditions-detail").toggle();
+        });
+      });

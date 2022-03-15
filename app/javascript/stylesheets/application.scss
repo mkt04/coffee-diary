@@ -8,9 +8,45 @@ body {
   padding: 5rem 0rem 1rem 0rem;
 }
 
-.header-menu-search:before {
-  width: 0px !important;
-  background: none !important;
+.header-menu-search {
+  width: 240px;
+
+  &:before {
+    width: 0px !important;
+    background: none !important;
+  }
+
+  .search-conditions{
+    position: absolute;
+    top: -20px;
+    right: 0px;
+    width: 320px;
+    background-color: white;
+    z-index: 1000;
+    display: none;
+  }
+
+  .search-conditions-overlay{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 100;
+    display: none;
+  }
+
+  .search-conditions-detail{
+    display: none;
+  }
+}
+
+// TODO::component用のファイルを用意する事
+.c-input-date{
+  width: auto !important;
+  padding-left: 0.5em !important;
+  padding-right: 0.5em !important;
 }
 
 @media only screen and (max-width: 767px) {
