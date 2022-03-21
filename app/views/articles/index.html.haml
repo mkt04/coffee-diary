@@ -29,3 +29,76 @@
           .column
             .ui.segment.p-article-segment
               = render partial: "article", locals: {article: article}
+
+  -# TODO::専用のjsファイルに切り出すこと
+  :javascript
+    $(function(){
+      // 未入力の項目を非表示にする
+      var $editForms = $(".js-edit-article");
+      $editForms.each(function(_index, element){
+        hideArticleInputs($(element));
+      });
+
+      // TODO::↓処理は要注意。先頭のformしか発火しない可能性あり。テストしてダメだったら$(".js-edit-article")を直接指定すること
+      $editForms.on("click", function() {
+        enableArticleForm($(this));
+      });
+      $(".js-article-edit-cancel").on("click", function(event) {
+        event.stopPropagation(); // 親要素($editForms)のイベント発火を止める
+        disableArticleForm($(this).closest(".js-edit-article"));
+      })
+
+      function hideArticleInputs($form){
+        var $input = $form.find(".js-edit-producing-area");
+        if($input.val() == ""){
+          $input.parent().hide();
+        }
+        $input = $form.find(".js-edit-particle-size");
+        if($input.val() == ""){
+          $input.parent().hide();
+        }
+        $input = $form.find(".js-edit-want-to-again");
+        if(!$input.prop("checked")){
+          $input.parent().hide();
+        }
+      }
+      function enableArticleForm($form){
+        $form.find(".js-edit-div").each(function(_index, element){
+          $(element).show();
+          $(element).removeClass("transparent");
+          $(element).find("input").each(function(_i, e){
+            $(e).prop("disabled", false);
+          });
+          $(element).find("textarea").prop("disabled", false);
+        });
+        $form.find(".js-article-edit-buttons").show();
+      }
+      function disableArticleForm($form){
+        $form.find(".js-edit-div").each(function(_index, element){
+          $(element).hide();
+          $(element).addClass("transparent");
+          $(element).find("input").each(function(_i, e){
+            $(e).prop("disabled", true);
+          });
+          $(element).find("textarea").prop("disabled", true);
+        });
+        $form.find(".js-article-edit-buttons").hide();
+      }
+    });
+
+  -# TODO::専用のCSSファイルに切り出すこと
+  :css
+    .p-article-input-div {
+      width: 100%;
+      margin: 5px auto;
+    }
+    .p-article-input-label {
+      margin: auto;
+    }
+    .p-article-input {
+      opacity: 1 !important;
+      margin: auto;
+    }
+    .p-article-edit-buttons {
+      display: none;
+    }
