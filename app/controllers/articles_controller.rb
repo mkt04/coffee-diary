@@ -43,9 +43,9 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   def update
     if @article.update(_article_params)
-      redirect_to article_url(@article), notice: "日記を編集しました"
+      render :show, status: :ok, location: @article
     else
-      render :edit, status: :unprocessable_entity
+      render json: @article.errors, status: :unprocessable_entity
     end
   end
 
